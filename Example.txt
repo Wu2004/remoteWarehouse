@@ -1,3 +1,5 @@
 example of commit
 
 add and commit together
+
+add new file
