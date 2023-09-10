@@ -1,0 +1,68 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	
+	int choose,i,j;
+	char pin[16],Pin[16];
+		cout << "---------------------------" << endl;
+		cout << "---------------------------" << endl;
+		cout << "欢迎使用密码管理系统		" << endl;
+		cout << "---------------------------" << endl;
+		cout << "---------------------------" << endl;
+		cout << "	请选择操作：			" << endl;
+		cout << "1.加密						" << endl;
+		cout << "2.解密						" << endl;
+		cout << "3.判断密码强度				" << endl;
+		cout << "4.密码生成					" << endl;
+		cout << "5.退出						" << endl;
+		cout << "请输入选项序号:" << endl;
+		cin >> choose;
+		switch (choose)
+		{
+		case 1:cout << "请输入要加密的数字密码：";
+			cin >> pin;
+			j = strlen(pin);
+			char temp1;
+			for (i = 0; i < j; i++)
+			{
+				Pin[i] = pin[i] + i + 4;
+			}
+			temp1 = Pin[0];
+			Pin[0] = Pin[j-1];
+			Pin[j-1] = temp1;
+			for (i = 0; i < j / 2; i++)
+			{
+				temp1 = Pin[i];
+				Pin[i] = Pin[j - 1-i];
+				Pin[j - 1-i] = temp1;
+			}
+			Pin[strlen(pin)] = '\0';
+			cout << "加密后的结果是:"<<Pin<<endl;
+			break;
+		case 2:cout << "请输入要解密的数字密码：";
+			cin >> Pin;
+			j = strlen(Pin);
+			char temp2;
+				for (i = 0; i < j / 2; i++)
+			{
+				temp2 = Pin[i];
+				Pin[i] = Pin[j - 1-i];
+				Pin[j - 1-i] = temp2;
+			}
+			temp2 = Pin[0];
+			Pin[0] = Pin[j-1];
+			Pin[j-1] = temp2;
+			for (i = 0; i <= j; i++)
+			{
+				pin[i] = Pin[i] - i - 4;
+			}
+			pin[strlen(Pin)] = '\0';
+			cout << "解密后的结果是:"<<pin<<endl;
+			break;
+		case 3:break;
+		case 4:break;
+		}
+		return 0;
+}
