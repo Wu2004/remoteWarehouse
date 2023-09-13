@@ -23,44 +23,44 @@ int main()
 		{
 		case 1:cout << "请输入要加密的数字密码：";
 			cin >> pin;
-			j = strlen(pin);
+			j = strlen(pin);//密码长度
 			char temp1;
 			for (i = 0; i < j; i++)
 			{
 				Pin[i] = pin[i] + i + 4;
-			}
+			}//对每位密码进行偏移
 			temp1 = Pin[0];
 			Pin[0] = Pin[j-1];
-			Pin[j-1] = temp1;
+			Pin[j-1] = temp1;//密码第一位和最后一位互换
 			for (i = 0; i < j / 2; i++)
 			{
 				temp1 = Pin[i];
 				Pin[i] = Pin[j - 1-i];
 				Pin[j - 1-i] = temp1;
-			}
+			}//密码反转
 			Pin[strlen(pin)] = '\0';
-			cout << "加密后的结果是:"<<Pin<<endl;
+			cout << "加密后的结果是:"<<Pin<<endl;//输出加密后的密码
 			break;
 		case 2:cout << "请输入要解密的数字密码：";
 			cin >> Pin;
-			j = strlen(Pin);
+			j = strlen(Pin);//密码长度
 			char temp2;
 				for (i = 0; i < j / 2; i++)
 			{
 				temp2 = Pin[i];
 				Pin[i] = Pin[j - 1-i];
 				Pin[j - 1-i] = temp2;
-			}
+			}//密码反转
 			temp2 = Pin[0];
 			Pin[0] = Pin[j-1];
-			Pin[j-1] = temp2;
+			Pin[j-1] = temp2;//密码第一位和最后一位互换
 			for (i = 0; i <= j; i++)
 			{
 				pin[i] = Pin[i] - i - 4;
-			}
+			}//对每位偏移的密码复原
 			pin[strlen(Pin)] = '\0';
 			cout << "解密后的结果是:"<<pin<<endl;
-			break;
+			break;//输出解密密码
 		case 3:break;
 		case 4:break;
 		}
